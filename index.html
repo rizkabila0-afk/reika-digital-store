@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moka Digital — Your Little Digital Store</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #fffaf3;
+  --pink: #f5dce1;
+  --pink-dark: #d99ca9;
+  --yellow: #f8edc9;
+  --lavender: #e9e3f5;
+  --green: #e5eddf;
+  --brown: #59473f;
+  --muted: #9b8880;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--brown);
+  font-family: 'Nunito', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header {
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 7%;
+  background: rgba(255,250,243,.94);
+  border-bottom: 1px solid #f1e8df;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+}
+
+.logo {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: var(--pink-dark);
+}
+
+nav {
+  display: flex;
+  gap: 28px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+nav a:hover {
+  color: var(--pink-dark);
+}
+
+.menu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 25px;
+  color: var(--brown);
+}
+
+.hero {
+  max-width: 1100px;
+  margin: auto;
+  padding: 75px 7%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 30px;
+}
+
+.eyebrow {
+  display: inline-block;
+  background: var(--pink);
+  padding: 9px 16px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 6vw, 65px);
+  line-height: 1.15;
+  margin: 22px 0;
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+
+.hero h1 span {
+  color: var(--pink-dark);
+}
+
+.hero p {
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 15px;
+  max-width: 430px;
+}
+
+.primary-btn {
+  display: inline-block;
+  background: var(--brown);
+  color: white;
+  border-radius: 30px;
+  padding: 14px 25px;
+  margin-top: 25px;
+  font-weight: 800;
+  font-size: 13px;
+  transition: .3s;
+}
+
+.primary-btn:hover {
+  background: var(--pink-dark);
+  transform: translateY(-3px);
+}
+
+.hero-art {
+  background: var(--yellow);
+  min-height: 310px;
+  border-radius: 48% 48% 35% 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cat {
+  font-size: 115px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 28px;
+}
+
+.s1 { top: 20%; left: 17%; }
+.s2 { right: 16%; top: 30%; }
+.s3 { bottom: 18%; left: 22%; }
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.trust {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px;
+  background: white;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+section.products-section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 75px 7%;
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-head small {
+  color: var(--pink-dark);
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.section-head h2 {
+  font-size: 32px;
+  margin-top: 8px;
+}
+
+.section-head p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 17px;
+}
+
+.product {
+  border-radius: 23px;
+  padding: 23px 15px;
+  text-align: center;
+  transition: .3s;
+  border: 1px solid rgba(100,70,60,.05);
+}
+
+.product:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 12px 25px rgba(100,70,60,.08);
+}
+
+.product:nth-child(1) { background: var(--pink); }
+.product:nth-child(2) { background: var(--lavender); }
+.product:nth-child(3) { background: var(--green); }
+.product:nth-child(4) { background: var(--yellow); }
+
+.product-icon {
+  font-size: 43px;
+  margin-bottom: 15px;
+}
+
+.product h3 {
+  font-size: 15px;
+  margin-bottom: 7px;
+}
+
+.product p {
+  font-size: 11px;
+  color: #88766d;
+  line-height: 1.6;
+}
+
+.product button {
+  border: none;
+  background: white;
+  color: var(--brown);
+  border-radius: 25px;
+  padding: 10px 15px;
+  margin-top: 17px;
+  font-weight: 800;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.promo {
+  max-width: 950px;
+  margin: 0 auto 70px;
+  background: var(--pink);
+  padding: 40px 25px;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.promo h2 {
+  font-size: 27px;
+  margin-bottom: 10px;
+}
+
+.promo p {
+  color: #886f6b;
+  font-size: 13px;
+}
+
+footer {
+  background: #59473f;
+  color: white;
+  padding: 35px 7%;
+  text-align: center;
+}
+
+footer p {
+  font-size: 12px;
+  opacity: .7;
+  margin-top: 10px;
+}
+
+@media(max-width:650px) {
+  header {
+    padding: 0 6%;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 74px;
+    left: 0;
+    right: 0;
+    padding: 25px;
+    background: var(--cream);
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav.show {
+    display: flex;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 55px 7%;
+    text-align: center;
+  }
+
+  .hero p {
+    margin: auto;
+  }
+
+  .hero-art {
+    min-height: 230px;
+  }
+
+  .cat {
+    font-size: 90px;
+  }
+
+  .trust {
+    gap: 12px;
+    font-size: 10px;
+  }
+
+  section.products-section {
+    padding: 55px 6%;
+  }
+
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .section-head h2 {
+    font-size: 27px;
+  }
+
+  .promo {
+    margin: 0 6% 50px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a class="logo" href="#">moka<span>digital.</span> ♡</a>
+
+  <nav id="navigation">
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+  </nav>
+
+  <button class="menu" onclick="toggleMenu()">☰</button>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <div class="eyebrow">✿ YOUR LITTLE DIGITAL STORE</div>
+
+    <h1>
+      a little treat for your
+      <span>digital life ♡</span>
+    </h1>
+
+    <p>
+      Your favorite premium things, just a click away.
+      Temukan berbagai kebutuhan digital dengan
+      pengalaman belanja yang mudah dan menyenangkan.
+    </p>
+
+    <a href="#products" class="primary-btn">
+      Explore goodies →
+    </a>
+  </div>
+
+  <div class="hero-art">
+    <span class="sparkle s1">✧</span>
+    <span class="sparkle s2">♡</span>
+    <span class="sparkle s3">✿</span>
+    <div class="cat">🐱</div>
+  </div>
+</section>
+
+<div class="trust">
+  <span>♡ EASY CHECKOUT</span>
+  <span>✧ SECURE PAYMENT</span>
+  <span>✿ FRIENDLY SERVICE</span>
+</div>
+
+<section class="products-section" id="products">
+
+  <div class="section-head">
+    <small>OUR COLLECTION ✿</small>
+    <h2>Find your favorites ♡</h2>
+    <p>A little something to make your day better.</p>
+  </div>
+
+  <div class="products">
+
+    <div class="product">
+      <div class="product-icon">🎬</div>
+      <h3>Streaming</h3>
+      <p>Premium entertainment subscriptions.</p>
+      <button onclick="chooseProduct('Streaming')">
+        Explore →
+      </button>
+    </div>
+
+    <div class="product">
+      <div class="product-icon">🎧</div>
+      <h3>Music</h3>
+      <p>Enjoy your favorite music.</p>
+      <button onclick="chooseProduct('Music')">
+        Explore →
+      </button>
+    </div>
+
+    <div class="product">
+      <div class="product-icon">☁️</div>
+      <h3>Cloud</h3>
+      <p>Digital productivity essentials.</p>
+      <button onclick="chooseProduct('Cloud')">
+        Explore →
+      </button>
+    </div>
+
+    <div class="product">
+      <div class="product-icon">🎀</div>
+      <h3>More goodies</h3>
+      <p>Discover more digital products.</p>
+      <button onclick="chooseProduct('More goodies')">
+        Explore →
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<section class="promo" id="about">
+  <h2>a little happiness, delivered ♡</h2>
+  <p>
+    Simple shopping, lovely experience.
+    Thank you for visiting our little store!
+  </p>
+</section>
+</main>
+
+<footer>
+  <h2>moka digital ♡</h2>
+  <p>Made with love for your digital needs.</p>
+  <p>© 2026 Moka Digital. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('navigation').classList.toggle('show');
+}
+
+function chooseProduct(name) {
+  alert(name + ' collection coming soon! ♡');
+}
+</script>
+
+</body>
+</html>
