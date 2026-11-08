@@ -1,492 +1,250 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moka Digital — Your Little Digital Store</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fffaf3">
+  <meta name="description" content="Reika Store — toko aplikasi digital bertema Y2K music player. Pilih aplikasi, plan, durasi, lalu order lewat WhatsApp.">
+  <title>Reika Store ♡ — Your Premium Playlist</title>
+  <style>
+    :root{--ink:#353448;--muted:#777484;--paper:#fffcf8;--mint:#a4e6dc;--mint-strong:#4fbbad;--pink:#ffc6d8;--pink-deep:#e87593;--yellow:#ffe7a0;--coral:#f2a39a;--line:#e9e0db;--shadow:0 7px 0 #e8dedb;--radius:24px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff9f4;color:var(--ink);font-family:'Trebuchet MS',Verdana,Arial,sans-serif;overflow-x:hidden}
+    button,input,a{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #56b6ad;outline-offset:3px}button:disabled{opacity:.55;cursor:not-allowed}
+    .shell{max-width:1120px;margin:auto;padding:0 26px 130px}.mono{font-family:'Courier New',monospace;font-weight:700;letter-spacing:.045em}
+    .ticker{height:30px;display:flex;align-items:center;justify-content:center;background:var(--mint);font-size:10px;letter-spacing:.13em;font-family:'Courier New',monospace;font-weight:700;border-bottom:2px solid var(--ink);white-space:nowrap;overflow:hidden}.ticker b{color:#c4576e;margin:0 16px}
+    .header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:23px 0 19px}.brand{display:flex;align-items:center;gap:11px}.brandmark{height:47px;width:47px;display:grid;place-items:center;border:2px solid var(--ink);border-radius:15px;background:var(--pink);box-shadow:3px 3px 0 var(--ink);font-size:28px;font-weight:1000;transform:rotate(-7deg)}.brand-name{font-size:26px;font-weight:1000;letter-spacing:-.08em;line-height:.9}.brand-name i{font-style:normal;color:var(--pink-deep)}.brand-sub{font-size:9px;letter-spacing:.12em;color:var(--muted);margin-top:7px}.top-links{display:flex;gap:30px;font-size:12px;font-weight:900;align-items:center}.top-links a:hover{color:#c8617e}.header-actions{display:flex;gap:9px;align-items:center}.circle-btn{border:2px solid var(--ink);background:white;color:var(--ink);border-radius:16px;width:42px;height:40px;display:grid;place-items:center;box-shadow:3px 3px 0 #e9dfdc}.circle-btn svg{width:20px;height:20px}.status{font-family:'Courier New',monospace;font-size:10px;background:#effbf4;padding:9px 13px;border-radius:18px;border:1.5px solid #d3ede3;white-space:nowrap}.status:before{content:'';display:inline-block;width:7px;height:7px;background:#59bda7;border-radius:50%;margin-right:7px}
+    .hero{display:grid;grid-template-columns:1.03fr .97fr;min-height:420px;overflow:hidden;border:2px solid var(--ink);border-radius:23px;background:#d7f4ee;box-shadow:7px 8px 0 #ddded9;position:relative}.hero:before{content:'';position:absolute;inset:34px 0 0;pointer-events:none;background:radial-gradient(circle at 91% 17%,#fff3b2 0 17%,transparent 17.3%),radial-gradient(circle at 54% 93%,#fff8ec 0 15%,transparent 15.4%);opacity:.8}.window-top{grid-column:1/-1;height:35px;border-bottom:2px solid var(--ink);background:linear-gradient(90deg,#ffd0df,#ffecd1);display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:2}.dots{display:flex;gap:6px}.dots i{width:11px;height:11px;border:1.5px solid var(--ink);background:#fff;border-radius:50%;display:block}.dots i:nth-child(1){background:#ff958d}.dots i:nth-child(2){background:#fff2a0}.dots i:nth-child(3){background:#9ee1d3}.window-top small{font-size:10px}.window-close{border:1.5px solid var(--ink);background:#fdfaf2;padding:1px 12px;font-weight:bold}
+    .hero-copy{padding:30px 0 43px 43px;position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}.eyebrow{font:700 11px 'Courier New',monospace;letter-spacing:.12em;background:#fffaf4;border:1.5px solid var(--ink);border-radius:20px;padding:8px 13px;box-shadow:3px 3px 0 #8fd7cd}.hero h1{font-size:clamp(40px,5.3vw,67px);letter-spacing:-.075em;line-height:.98;margin:20px 0 16px;font-weight:1000}.hero h1 em{display:inline-block;color:#eb849b;font-style:normal;text-shadow:2px 2px #fff9df;-webkit-text-stroke:.4px #ad6479}.hero-desc{max-width:365px;font-size:14px;line-height:1.65;margin:0;color:#4e5960}.hero-buttons{display:flex;gap:9px;align-items:center;margin-top:24px;flex-wrap:wrap}.pill{border:2px solid var(--ink);border-radius:50px;font-weight:900;font-size:12px;padding:12px 18px;box-shadow:3px 4px 0 var(--ink);transition:transform .12s,box-shadow .12s}.pill:active{transform:translate(3px,4px);box-shadow:none}.pill.primary{background:var(--coral)}.pill.secondary{background:var(--yellow)}.hero-foot{font-size:10px;margin-top:22px;display:flex;gap:10px;align-items:center;color:#657e77;font-family:'Courier New',monospace;font-weight:700}.hero-foot i{height:2px;width:24px;background:#60897f}
+    .player-art{position:relative;display:flex;align-items:center;justify-content:center;min-width:0}.music-sticker{position:absolute;top:17px;right:24px;font-family:'Courier New',monospace;font-size:11px;background:#fffdf5;border:1.5px solid var(--ink);padding:8px 11px;transform:rotate(9deg);box-shadow:3px 3px 0 #e6aab8;z-index:2}.big-cd{width:min(340px,80%);aspect-ratio:1;border-radius:50%;border:3px solid #454153;background:repeating-radial-gradient(circle at center,transparent 0 6px,#ffffff35 7px 9px,transparent 10px 21px),conic-gradient(from 45deg,#8edddd,#fdfdfc,#eebed3,#fff1ad,#98ead8,#fdfdf9,#d7baf9,#fce9b4,#8edddd);box-shadow:14px 17px 0 #ebbad0,17px 19px 0 var(--ink),0 0 0 9px #fff8e6,0 0 0 11px var(--ink);position:relative;display:grid;place-items:center;transform:rotate(-12deg)}.big-cd:before{content:'REII\A ORIGINAL MIX';white-space:pre;text-align:center;display:grid;place-items:center;width:42%;height:42%;border-radius:50%;font:900 clamp(12px,1.7vw,20px)/1.5 'Courier New',monospace;color:#3f4453;border:3px solid var(--ink);background:var(--yellow);box-shadow:inset 0 0 0 8px #f9d3df;transform:rotate(12deg)}.big-cd:after{content:'';position:absolute;width:11%;height:11%;border-radius:50%;background:#fffaf5;border:3px solid var(--ink)}.floating-star{position:absolute;font-size:43px;color:#f78ba5;text-shadow:2px 2px #fff;top:35px;left:19px;transform:rotate(15deg)}.floating-star.s2{font-size:30px;color:#ecc062;bottom:37px;right:30px;top:auto;left:auto}.cd-tab{position:absolute;bottom:27px;left:0;background:#fffef6;border:1.5px solid var(--ink);border-radius:12px;padding:10px 14px;font-size:10px;font-weight:bold;box-shadow:4px 5px 0 #e6abc0;transform:rotate(-5deg)}
+    .meta-strip{display:flex;justify-content:space-between;gap:18px;align-items:center;margin:31px 0 28px;padding:13px 20px;border-top:1.5px dashed #d8b9c0;border-bottom:1.5px dashed #d8b9c0}.meta-strip .mono{font-size:11px}.tiny-waves{display:flex;align-items:end;gap:3px;height:16px}.tiny-waves i{display:block;width:4px;background:var(--pink-deep);border-radius:2px;height:7px}.tiny-waves i:nth-child(2),.tiny-waves i:nth-child(6){height:14px}.tiny-waves i:nth-child(3),.tiny-waves i:nth-child(5){height:10px}.tiny-waves i:nth-child(4){height:16px}
+    .section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:16px;gap:12px}.kicker{font:700 10px 'Courier New',monospace;color:#c76f86;letter-spacing:.08em}.section-head h2{font-size:26px;letter-spacing:-.05em;margin:6px 0 0}.count{font:700 11px 'Courier New',monospace;color:#787484}.filters{display:flex;gap:9px;overflow-x:auto;scrollbar-width:none;padding:2px 3px 9px;margin:0 0 11px}.filters::-webkit-scrollbar{display:none}.filter{white-space:nowrap;border:1.5px solid #d7ccd0;background:#fffefc;padding:10px 15px;border-radius:22px;font-size:12px;font-weight:bold}.filter.active{background:var(--yellow);border-color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
+    .album-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.album-card{background:#fff;border:1.5px solid #dcd3d0;border-radius:19px;padding:10px;box-shadow:3px 5px 0 #ece4e0;min-width:0;transition:transform .14s}.album-card:hover{transform:translateY(-3px)}.album-cover{width:100%;aspect-ratio:1.08;border:1.5px solid var(--ink);border-radius:13px;position:relative;overflow:hidden;display:grid;place-items:center;isolation:isolate}.album-cover:before{content:'';position:absolute;width:140%;height:45%;background:#fff7;transform:rotate(-31deg);top:-12%;left:-24%;z-index:-1}.album-cover:after{content:'';position:absolute;width:68%;aspect-ratio:1;border:1.5px dashed #ffffff9a;border-radius:50%;bottom:-43%;right:-19%;z-index:-1}.cover-top{position:absolute;top:10px;left:10px;right:10px;display:flex;justify-content:space-between;gap:5px;font:700 8px 'Courier New',monospace}.cover-name{font-weight:1000;font-size:clamp(32px,3vw,51px);letter-spacing:-.08em;text-align:center;text-shadow:2px 3px 0 #fff7;line-height:.8}.album-cover .spark{position:absolute;right:12px;bottom:6px;font-size:32px;opacity:.85}.album-cover.spotify{background:#c0edca;color:#1e745e}.album-cover.netflix{background:#ffd0cb;color:#d4565a}.album-cover.canva{background:#c9e9f4;color:#5279c6}.album-cover.chatgpt{background:#fce7b7;color:#728b6d}.album-cover.capcut{background:#e8d6f1;color:#6f5d9e}.album-cover.youtube{background:#ffcddc;color:#d55666}.album-cover.disney{background:#d6e5ff;color:#5968a1}.album-cover.viu{background:#fff3b5;color:#df9c2f}.album-cover.spotify .cover-name{font-size:40px}.album-cover.netflix .cover-name{font-size:50px}.album-cover.chatgpt .cover-name{font-size:45px}.album-cover.capcut .cover-name{font-size:45px}
+    .album-meta{padding:12px 3px 3px}.album-topline{display:flex;justify-content:space-between;align-items:flex-start;gap:3px}.album-meta h3{font-size:14px;letter-spacing:-.025em;margin:0;line-height:1.25}.album-meta small{color:#938b93;font:700 9px 'Courier New',monospace}.price-line{display:flex;justify-content:space-between;align-items:end;gap:8px;margin:13px 0 11px}.price-line span{font-size:10px;color:#787484}.price-line strong{display:block;font-size:17px;color:#c6667f;letter-spacing:-.05em}.track-btn{width:100%;border:1.5px solid var(--ink);background:#b1e9df;border-radius:10px;padding:10px;font-weight:1000;font-size:11px;box-shadow:2px 2px 0 var(--ink)}.track-btn:hover{background:#8fdbcd}
+    .split{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:36px}.playlist{background:#fff;border:1.5px solid var(--ink);border-radius:18px;overflow:hidden;box-shadow:5px 5px 0 #ead8d6}.panel-bar{background:var(--pink);border-bottom:1.5px solid var(--ink);padding:10px 15px;display:flex;align-items:center;justify-content:space-between}.panel-bar span{font-size:10px}.playlist-list{padding:8px 13px 15px}.song-row{width:100%;display:grid;grid-template-columns:23px 42px 1fr auto 31px;align-items:center;gap:10px;background:transparent;border:0;border-bottom:1px solid #f2e8e8;text-align:left;padding:9px 1px;color:var(--ink)}.song-row:last-child{border-bottom:0}.song-row:hover{background:#fffaf6}.num{font:700 10px 'Courier New',monospace;color:#aaa0aa}.song-cover{height:40px;width:40px;border:1.5px solid var(--ink);border-radius:9px;display:grid;place-items:center;font-weight:1000;font-size:16px}.song-data{min-width:0}.song-data strong{font-size:12px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.song-data small{color:#90878c;font-size:10px;display:block;margin-top:3px}.song-price{font:700 11px 'Courier New',monospace;white-space:nowrap}.song-add{display:grid;place-items:center;background:var(--yellow);border:1.5px solid var(--ink);width:28px;height:28px;border-radius:50%;font-size:18px}
+    .how{border:1.5px solid var(--ink);border-radius:18px;background:#fff1cd;box-shadow:5px 5px 0 #ead8d6;overflow:hidden;align-self:start}.how .panel-bar{background:#b7ece4}.how-body{padding:18px}.how-body h3{font-size:24px;letter-spacing:-.06em;margin:0 0 6px}.how-body>p{font-size:11px;color:#756d70;margin:0 0 16px}.step{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px dashed #dfcbae}.step-number{width:32px;height:32px;display:grid;place-items:center;background:white;border:1.5px solid var(--ink);border-radius:50%;font-weight:900;font-family:'Courier New',monospace;font-size:12px;flex-shrink:0}.step strong{font-size:12px;display:block}.step small{font-size:11px;color:#766e75;display:block;margin-top:3px}.message{background:#fff;border:1.5px dashed #bbaab0;border-radius:13px;padding:12px;margin-top:12px;font:11px/1.6 'Courier New',monospace}.footer-note{text-align:center;font-size:10px;color:#9a8d91;padding:28px 0 3px}
+    .dock{display:none}.mini-player{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:18;width:min(550px,calc(100% - 32px));background:#fefcf8;border:2px solid var(--ink);border-radius:16px;box-shadow:5px 5px 0 #4b4552;align-items:center;gap:11px;padding:8px 10px;display:none}.mini-player.visible{display:flex}.mini-art{width:40px;height:40px;border:1.5px solid var(--ink);border-radius:8px;display:grid;place-items:center;font-weight:900;flex-shrink:0}.mini-data{min-width:0;flex:1}.mini-data strong{display:block;font-size:12px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.mini-data small{font-size:10px;color:#9b8895}.mini-action{background:var(--coral);border:1.5px solid var(--ink);border-radius:9px;padding:10px 13px;font-size:11px;font-weight:900;white-space:nowrap}
+    .overlay{position:fixed;inset:0;z-index:30;background:#3933429c;display:none;align-items:center;justify-content:center;padding:16px}.overlay.open{display:flex}.modal{width:min(425px,100%);max-height:92vh;overflow:auto;background:#fffbf5;border:2px solid var(--ink);border-radius:19px;box-shadow:7px 9px 0 #2d2636;position:relative}.modal-head{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:var(--pink);border-bottom:2px solid var(--ink)}.modal-head span{font-size:11px}.close-btn{font-size:18px;font-weight:900;border:1.5px solid var(--ink);background:#fffdf7;border-radius:5px;width:29px;height:26px}.modal-body{padding:19px}.modal-product{display:flex;align-items:center;gap:14px;margin-bottom:18px}.modal-icon{border:2px solid var(--ink);height:65px;width:65px;display:grid;place-items:center;border-radius:13px;font-size:27px;font-weight:900;flex-shrink:0}.modal-product strong{font-size:21px;letter-spacing:-.04em}.modal-product small{display:block;color:#91858a;font-size:11px;margin-top:5px}.modal-label{font:700 11px 'Courier New',monospace;display:block;margin-bottom:11px}.duration-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.duration-choice{border:1.5px solid #cfc4c8;background:white;border-radius:10px;padding:12px;text-align:left}.duration-choice.active{background:#b7ede2;border:2px solid var(--ink);padding:11.5px;box-shadow:2px 2px 0 var(--ink)}.duration-choice strong{font-size:12px;display:block}.duration-choice small{font-size:11px;color:#846e7b;display:block;margin-top:4px}.order-summary{display:flex;justify-content:space-between;align-items:center;background:#fff1c5;border:1.5px solid var(--ink);border-radius:10px;margin:17px 0 11px;padding:13px}.order-summary span{font-size:11px}.order-summary b{font-size:21px;color:#b34f72}.order-wa{background:#9ce5d2;border:2px solid var(--ink);border-radius:12px;width:100%;padding:15px;font-size:13px;font-weight:900;box-shadow:3px 3px 0 var(--ink)}.copy-btn{width:100%;border:0;background:transparent;text-decoration:underline;text-underline-offset:3px;padding:14px 5px 3px;color:#987186;font-size:11px}.warning{font-size:11px;line-height:1.55;color:#a36c6d;margin:12px 0 0}.search-panel{display:none;margin-bottom:18px}.search-panel.visible{display:block}.search-field{width:100%;border:2px solid var(--ink);border-radius:13px;padding:13px 15px;background:white;font-size:14px}.no-results{font-size:13px;color:#92818a;padding:30px;text-align:center;border:1px dashed #e7b7c4;border-radius:15px;grid-column:1/-1}
+    @media(max-width:850px){.shell{padding:0 17px 125px}.hero-copy{padding-left:29px}.top-links{gap:14px}.album-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}.big-cd{width:76%}.split{grid-template-columns:1fr 1fr}}
+    @media(max-width:630px){.ticker{font-size:9px}.shell{padding:0 16px 155px}.header{padding:19px 0}.brandmark{width:41px;height:41px;font-size:23px}.brand-name{font-size:23px}.brand-sub{font-size:8px}.top-links,.status{display:none}.circle-btn{width:39px;height:39px}.hero{grid-template-columns:1fr;min-height:0;box-shadow:5px 6px 0 #e8dfd7}.window-top{height:34px}.hero-copy{padding:23px 23px 8px}.hero h1{font-size:43px;margin:15px 0 10px}.hero-desc{font-size:12.5px;max-width:315px}.hero-buttons{margin-top:16px}.pill{font-size:11px;padding:11px 13px}.hero-foot{margin-top:14px;font-size:9px}.player-art{height:205px}.big-cd{width:178px;max-width:none;transform:rotate(-12deg);margin-top:-14px;margin-left:58px;box-shadow:9px 11px 0 #ebbad0,11px 13px 0 var(--ink),0 0 0 6px #fff8e6,0 0 0 8px var(--ink)}.big-cd:before{font-size:11px;box-shadow:inset 0 0 0 5px #f9d3df;border-width:2px}.big-cd:after{border-width:2px}.music-sticker{top:16px;right:22px;font-size:9px;transform:rotate(8deg)}.floating-star{font-size:29px;top:29px;left:48px}.floating-star.s2{font-size:22px;right:39px;bottom:14px}.cd-tab{bottom:27px;left:18px;font-size:8px;padding:8px 10px}.meta-strip{margin:24px 0 23px;padding:9px 0}.meta-strip .mono{font-size:9px}.section-head h2{font-size:24px}.album-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.album-cover .cover-name{font-size:40px}.album-cover.spotify .cover-name{font-size:34px}.album-cover.netflix .cover-name{font-size:44px}.album-cover.chatgpt .cover-name{font-size:39px}.album-meta h3{font-size:14px}.split{grid-template-columns:1fr;margin-top:30px}.how-body h3{font-size:24px}.dock{position:fixed;z-index:19;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:#fffdfa;border-top:2px solid #e4d6dc;padding:9px 6px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -5px 15px #513c4910}.dock a,.dock button{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:55px;color:#8b7a87;font-size:9px;font-weight:bold;background:none;border:0;padding:1px}.dock svg{width:20px;height:20px;stroke-width:2}.dock .active{color:#ca6985}.mini-player{bottom:76px;width:calc(100% - 24px)}.modal{max-height:85vh}.overlay{align-items:end;padding:0 0 0}.modal{border-radius:20px 20px 0 0;width:100%;max-height:86vh;border-bottom:0;box-shadow:0 -5px 20px #26202a33}.modal-body{padding-bottom:calc(20px + env(safe-area-inset-bottom))}}
+    @media(max-width:360px){.hero h1{font-size:38px}.hero-copy{padding:21px 18px 6px}.player-art{height:180px}.big-cd{width:153px}.album-cover .cover-name{font-size:32px}.album-cover.netflix .cover-name{font-size:40px}.album-cover.spotify .cover-name{font-size:29px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  
+    /* REIKA STORE / Y2K COLLECTOR'S EDITION — additional controls */
+    .big-cd:before{content:'REIKA\A ORIGINAL MIX'}
+    .brand-name{letter-spacing:-.065em}
+    .show-more{display:block;margin:21px auto 0;padding:13px 24px;background:#ffdfaa;border:2px solid var(--ink);border-radius:40px;font:900 12px 'Courier New',monospace;box-shadow:3px 4px 0 var(--ink)}
+    .show-more[hidden]{display:none}
+    .show-more:hover{background:#ffe9bf}
+    .album-cover{background:var(--album-bg,#fff3d7);color:var(--album-ink,#80675b)}
+    .album-cover .cover-name{font-size:clamp(27px,2.6vw,44px);max-width:90%;overflow-wrap:anywhere;letter-spacing:-.08em}
+    .album-cover .cover-top{font-size:7px}
+    .album-topline h3{overflow-wrap:anywhere}
+    .plan-select{width:100%;border:2px solid var(--ink);border-radius:12px;background:#fffefb;color:var(--ink);padding:13px 12px;margin:0 0 17px;font-size:13px;font-weight:800;box-shadow:3px 3px 0 #e9d5d7}
+    .selected-detail{margin:11px 0 0;color:#7a6e78;font:700 10px/1.5 'Courier New',monospace;overflow-wrap:anywhere}
+    .duration-choice{min-width:0}
+    .duration-choice strong{line-height:1.45;overflow-wrap:anywhere}
+    .duration-choice small{font-weight:800;color:#ad5d7a}
+    .footer-note{line-height:1.6}
+    @media(max-width:630px){.brand-name{font-size:22px}.album-cover .cover-name{font-size:33px}.modal{max-height:89dvh}.duration-choice strong{font-size:11px}}
+    @media(max-width:360px){.brand-name{font-size:19px}.album-cover .cover-name{font-size:27px}}
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --cream: #fffaf3;
-  --pink: #f5dce1;
-  --pink-dark: #d99ca9;
-  --yellow: #f8edc9;
-  --lavender: #e9e3f5;
-  --green: #e5eddf;
-  --brown: #59473f;
-  --muted: #9b8880;
-  --white: #ffffff;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--cream);
-  color: var(--brown);
-  font-family: 'Nunito', sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-header {
-  height: 75px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 7%;
-  background: rgba(255,250,243,.94);
-  border-bottom: 1px solid #f1e8df;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  backdrop-filter: blur(12px);
-}
-
-.logo {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: -1px;
-}
-
-.logo span {
-  color: var(--pink-dark);
-}
-
-nav {
-  display: flex;
-  gap: 28px;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-nav a:hover {
-  color: var(--pink-dark);
-}
-
-.menu {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 25px;
-  color: var(--brown);
-}
-
-.hero {
-  max-width: 1100px;
-  margin: auto;
-  padding: 75px 7%;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  align-items: center;
-  gap: 30px;
-}
-
-.eyebrow {
-  display: inline-block;
-  background: var(--pink);
-  padding: 9px 16px;
-  border-radius: 30px;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 1.5px;
-}
-
-.hero h1 {
-  font-size: clamp(38px, 6vw, 65px);
-  line-height: 1.15;
-  margin: 22px 0;
-  font-weight: 900;
-  letter-spacing: -2px;
-}
-
-.hero h1 span {
-  color: var(--pink-dark);
-}
-
-.hero p {
-  color: var(--muted);
-  line-height: 1.9;
-  font-size: 15px;
-  max-width: 430px;
-}
-
-.primary-btn {
-  display: inline-block;
-  background: var(--brown);
-  color: white;
-  border-radius: 30px;
-  padding: 14px 25px;
-  margin-top: 25px;
-  font-weight: 800;
-  font-size: 13px;
-  transition: .3s;
-}
-
-.primary-btn:hover {
-  background: var(--pink-dark);
-  transform: translateY(-3px);
-}
-
-.hero-art {
-  background: var(--yellow);
-  min-height: 310px;
-  border-radius: 48% 48% 35% 35%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.cat {
-  font-size: 115px;
-  animation: float 3s ease-in-out infinite;
-}
-
-.sparkle {
-  position: absolute;
-  font-size: 28px;
-}
-
-.s1 { top: 20%; left: 17%; }
-.s2 { right: 16%; top: 30%; }
-.s3 { bottom: 18%; left: 22%; }
-
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-.trust {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  padding: 20px;
-  background: white;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 800;
-}
-
-section.products-section {
-  max-width: 1100px;
-  margin: auto;
-  padding: 75px 7%;
-}
-
-.section-head {
-  text-align: center;
-  margin-bottom: 35px;
-}
-
-.section-head small {
-  color: var(--pink-dark);
-  font-weight: 900;
-  letter-spacing: 2px;
-}
-
-.section-head h2 {
-  font-size: 32px;
-  margin-top: 8px;
-}
-
-.section-head p {
-  font-size: 13px;
-  color: var(--muted);
-  margin-top: 8px;
-}
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 17px;
-}
-
-.product {
-  border-radius: 23px;
-  padding: 23px 15px;
-  text-align: center;
-  transition: .3s;
-  border: 1px solid rgba(100,70,60,.05);
-}
-
-.product:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 12px 25px rgba(100,70,60,.08);
-}
-
-.product:nth-child(1) { background: var(--pink); }
-.product:nth-child(2) { background: var(--lavender); }
-.product:nth-child(3) { background: var(--green); }
-.product:nth-child(4) { background: var(--yellow); }
-
-.product-icon {
-  font-size: 43px;
-  margin-bottom: 15px;
-}
-
-.product h3 {
-  font-size: 15px;
-  margin-bottom: 7px;
-}
-
-.product p {
-  font-size: 11px;
-  color: #88766d;
-  line-height: 1.6;
-}
-
-.product button {
-  border: none;
-  background: white;
-  color: var(--brown);
-  border-radius: 25px;
-  padding: 10px 15px;
-  margin-top: 17px;
-  font-weight: 800;
-  font-family: inherit;
-  cursor: pointer;
-}
-
-.promo {
-  max-width: 950px;
-  margin: 0 auto 70px;
-  background: var(--pink);
-  padding: 40px 25px;
-  border-radius: 30px;
-  text-align: center;
-}
-
-.promo h2 {
-  font-size: 27px;
-  margin-bottom: 10px;
-}
-
-.promo p {
-  color: #886f6b;
-  font-size: 13px;
-}
-
-footer {
-  background: #59473f;
-  color: white;
-  padding: 35px 7%;
-  text-align: center;
-}
-
-footer p {
-  font-size: 12px;
-  opacity: .7;
-  margin-top: 10px;
-}
-
-@media(max-width:650px) {
-  header {
-    padding: 0 6%;
-  }
-
-  nav {
-    display: none;
-    position: absolute;
-    top: 74px;
-    left: 0;
-    right: 0;
-    padding: 25px;
-    background: var(--cream);
-    flex-direction: column;
-    text-align: center;
-  }
-
-  nav.show {
-    display: flex;
-  }
-
-  .menu {
-    display: block;
-  }
-
-  .hero {
-    grid-template-columns: 1fr;
-    padding: 55px 7%;
-    text-align: center;
-  }
-
-  .hero p {
-    margin: auto;
-  }
-
-  .hero-art {
-    min-height: 230px;
-  }
-
-  .cat {
-    font-size: 90px;
-  }
-
-  .trust {
-    gap: 12px;
-    font-size: 10px;
-  }
-
-  section.products-section {
-    padding: 55px 6%;
-  }
-
-  .products {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-
-  .section-head h2 {
-    font-size: 27px;
-  }
-
-  .promo {
-    margin: 0 6% 50px;
-  }
-}
-</style>
+  </style>
 </head>
-
 <body>
-
-<header>
-  <a class="logo" href="#">moka<span>digital.</span> ♡</a>
-
-  <nav id="navigation">
-    <a href="#">Home</a>
-    <a href="#products">Products</a>
-    <a href="#about">About</a>
+  <div class="ticker">✳ NEW DROP: YOUR DIGITAL FAVORITES <b>♥</b> REIKA STORE — THE PREMIUM MIX <b>♥</b> OPEN FOR ORDERS ✳</div>
+  <div class="shell" id="home">
+    <header class="header">
+      <a href="#home" class="brand" aria-label="Kembali ke beranda Reika Store">
+        <div class="brandmark">r<span style="color:#fef9f4">.</span></div>
+        <div><div class="brand-name">Reika<i> Store</i> ♡</div><div class="brand-sub mono">YOUR DIGITAL APP STORE</div></div>
+      </a>
+      <nav class="top-links" aria-label="Navigasi"><a href="#catalog">DISCOVER</a><a href="#playlist">ALL TRACKS</a><a href="#how-to">HOW TO ORDER</a></nav>
+      <div class="header-actions"><span class="status">● ACCEPTING ORDERS</span><button class="circle-btn" id="searchToggle" aria-label="Cari aplikasi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="10.8" cy="10.8" r="6.4"/><path d="m16 16 5 5"/></svg></button></div>
+    </header>
+    <div class="search-panel" id="searchPanel"><input class="search-field" type="search" placeholder="Cari aplikasi favoritmu…" id="searchInput" aria-label="Cari aplikasi"></div>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="window-top"><div class="dots"><i></i><i></i><i></i></div><small class="mono">REIKA_PLAYER.EXE // VOL. 01</small><span class="window-close" aria-hidden="true">×</span></div>
+      <div class="hero-copy">
+        <div class="eyebrow">✦ NOW PLAYING: THE PREMIUM MIX</div>
+        <h1 id="hero-title">your apps,<br><em>on repeat.</em> ✳</h1>
+        <p class="hero-desc">Lagi butuh Netflix, Spotify, Canva, atau aplikasi premium lainnya? Pilih favoritmu, tentukan durasi, lalu order langsung ke WhatsApp Reika Store. ♡</p>
+        <div class="hero-buttons"><a class="pill primary" href="#catalog">▶ EXPLORE APPS</a><a class="pill secondary" href="#how-to">HOW TO ORDER ↗</a></div>
+        <div class="hero-foot"><i></i> HANDPICKED DIGITAL FAVORITES <i></i></div>
+      </div>
+      <div class="player-art" aria-hidden="true">
+        <span class="music-sticker">♡ 100% REIKA VIBES</span><span class="floating-star">✳</span>
+        <div class="big-cd"></div><span class="floating-star s2">✦</span><span class="cd-tab">TRACK 01 / YOUR NEXT FAVE ♫</span>
+      </div>
+    </section>
+    <div class="meta-strip"><div class="mono">♫ PLAYLIST OF THE DAY <span style="color:#c885a0">//</span> CURATED BY REIKA</div><div class="tiny-waves" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="mono">VOL.001 · ♥ 2026</div></div>
+    <main>
+      <section id="catalog">
+        <div class="section-head"><div><div class="kicker">✳ THE COLLECTION / 01</div><h2>on repeat lately <span style="color:#e98ca3">♡</span></h2></div><span class="count" id="resultCount">36 TRACKS</span></div>
+        <div class="filters" role="group" aria-label="Filter kategori"><button class="filter active" data-filter="all">✦ all tracks</button><button class="filter" data-filter="music">♫ music</button><button class="filter" data-filter="watch">▣ watch party</button><button class="filter" data-filter="create">✎ create mode</button><button class="filter" data-filter="education">✳ study & tools</button><button class="filter" data-filter="other">♡ other apps</button></div>
+        <div class="album-grid" id="albumGrid"></div><button type="button" class="show-more" id="showMore" hidden>＋ LIHAT SEMUA APLIKASI</button>
+      </section>
+      <div class="split">
+        <section class="playlist" id="playlist" aria-labelledby="playlist-title"><div class="panel-bar"><span class="mono">♫ REIKA'S PLAYLIST <span style="color:#af667c">—</span> 36 DIGITAL FAVES</span><span class="mono">▢ ▢ ×</span></div><div class="playlist-list"><div style="padding:8px 0 10px"><div class="kicker">YOUR NEXT FAVORITE APP</div><h2 id="playlist-title" style="font-size:22px;margin:4px 0;letter-spacing:-.05em">all tracks, all apps.</h2></div><div id="playlistRows"></div></div></section>
+        <section class="how" id="how-to" aria-labelledby="how-title"><div class="panel-bar"><span class="mono">✳ HOW_TO_ORDER.TXT</span><span class="mono">♡ ×</span></div><div class="how-body"><div class="kicker">IT'S SUPER EASY</div><h3 id="how-title">press play<br>on your order. ♡</h3><p>Empat langkah sederhana untuk pesan aplikasi favoritmu.</p><div class="step"><div class="step-number">01</div><div><strong>Pick your app</strong><small>Pilih aplikasi dari playlist.</small></div></div><div class="step"><div class="step-number">02</div><div><strong>Choose your duration</strong><small>Pilih durasi yang kamu mau.</small></div></div><div class="step"><div class="step-number">03</div><div><strong>Hit order now</strong><small>Pesan otomatis disiapkan.</small></div></div><div class="step"><div class="step-number">04</div><div><strong>Say hi on WhatsApp!</strong><small>Konfirmasi ke admin Reika.</small></div></div><div class="message">“haii kaa reii, aku mau order Spotify · Famplan · 1 bulan (Rp 25.000) yaa ♡”</div></div></section>
+      </div>
+      <div class="footer-note mono">MADE WITH ♡ BY REIKA STORE · PRICES ARE SAMPLE DATA · NO MUSIC AUDIO IS PLAYED</div>
+    </main>
+  </div>
+  <div class="mini-player" id="miniPlayer" aria-live="polite"><div class="mini-art" id="miniArt">♫</div><div class="mini-data"><strong id="miniTitle">Choose your track</strong><small>READY TO ORDER ✦</small></div><button class="mini-action" id="miniOpen">PILIH DURASI ↗</button></div>
+  <nav class="dock" aria-label="Navigasi bawah">
+    <a href="#home" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 11 9-7 9 7v10H4V11"/><path d="M9 21v-7h6v7"/></svg>Home</a>
+    <a href="#catalog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M18 6 6 18"/></svg>Discover</a>
+    <a href="#playlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Playlist</a>
+    <a href="#how-to"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.8-2.5 2.1-2.5 4"/><circle cx="12" cy="17" r=".6" fill="currentColor"/></svg>How to</a>
   </nav>
-
-  <button class="menu" onclick="toggleMenu()">☰</button>
-</header>
-
-<main>
-<section class="hero">
-  <div>
-    <div class="eyebrow">✿ YOUR LITTLE DIGITAL STORE</div>
-
-    <h1>
-      a little treat for your
-      <span>digital life ♡</span>
-    </h1>
-
-    <p>
-      Your favorite premium things, just a click away.
-      Temukan berbagai kebutuhan digital dengan
-      pengalaman belanja yang mudah dan menyenangkan.
-    </p>
-
-    <a href="#products" class="primary-btn">
-      Explore goodies →
-    </a>
+  <div class="overlay" id="orderOverlay" role="dialog" aria-modal="true" aria-labelledby="modalName" aria-hidden="true">
+    <div class="modal"><div class="modal-head"><span class="mono">✳ ADD_TO_PLAYLIST.EXE / ORDER</span><button class="close-btn" id="closeModal" aria-label="Tutup">×</button></div><div class="modal-body"><div class="modal-product"><div class="modal-icon" id="modalIcon">♫</div><div><strong id="modalName">App Name</strong><small id="modalSub">SELECT A DURATION TO CONTINUE</small></div></div><label class="modal-label" for="planSelect">01 / PILIH PLAN & JENIS AKUN</label><select id="planSelect" class="plan-select" aria-label="Pilih plan dan jenis akun"></select><label class="modal-label" id="durationLabel">02 / PILIH DURASI & VARIAN</label><div class="duration-grid" id="durationOptions"></div><p class="selected-detail" id="selectedDetail" aria-live="polite"></p><div class="order-summary"><span class="mono">TOTAL ORDER ♡</span><b id="totalPrice">Rp 0</b></div><button class="order-wa" id="waOrder">ORDER NOW → WHATSAPP ↗</button><button class="copy-btn" id="copyMessage">Salin pesan order</button><p class="warning" id="waNotice" hidden>Isi dulu nomor WhatsApp admin di bagian <strong>WHATSAPP_NUMBER</strong> pada kode HTML, supaya tombol order bisa membuka chat kamu.</p></div></div>
   </div>
+  <script>
+  // ========================================================
+  // REIKA STORE — EDIT NOMOR WA DI SINI (format 62xxxxxxxxxx).
+  // Contoh: const WHATSAPP_NUMBER = "6281234567890";
+  // ========================================================
+  const WHATSAPP_NUMBER = "";
 
-  <div class="hero-art">
-    <span class="sparkle s1">✧</span>
-    <span class="sparkle s2">♡</span>
-    <span class="sparkle s3">✿</span>
-    <div class="cat">🐱</div>
-  </div>
-</section>
+  // DATA HARGA SESUAI PRICELIST REIKA STORE (semua dalam Rupiah).
+  // Struktur: aplikasi -> offers (plan/jenis akun) -> options (durasi/varian/harga).
+  const apps = [{"id":"netflix","name":"Netflix","short":"N","category":"watch","desc":"Film & series · streaming","tag":"WATCH","color":"#ffd0cb","ink":"#b95d6e","offers":[{"name":"1P1U","options":[{"label":"1 Hari","price":6000},{"label":"3 Hari","price":10000},{"label":"5 Hari","price":14000},{"label":"7 Hari","price":18000},{"label":"1 Bulan","price":40000}]},{"name":"1P2U","options":[{"label":"1 Hari","price":5000},{"label":"3 Hari","price":8000},{"label":"5 Hari","price":10000},{"label":"7 Hari","price":15000},{"label":"1 Bulan","price":25000}]},{"name":"Private","options":[{"label":"1 Bulan","price":165000}]}]},{"id":"disney","name":"Disney+","short":"D+","category":"watch","desc":"Disney+ · film & series","tag":"WATCH","color":"#d8eaf8","ink":"#4c79a7","offers":[{"name":"Plan Premium · Sharing 6U","options":[{"label":"1 Hari","price":7000},{"label":"3 Hari","price":12000},{"label":"5 Hari","price":15000},{"label":"7 Hari","price":20000},{"label":"1 Bulan","price":35000}]},{"name":"Plan Basic · Sharing 3U","options":[{"label":"1 Bulan","price":60000}]}]},{"id":"youtube","name":"YouTube Premium","short":"▶","category":"watch","desc":"Video & musik","tag":"WATCH","color":"#ffedb9","ink":"#9c7045","offers":[{"name":"Famplan","options":[{"label":"1 Bulan","price":12000},{"label":"2 Bulan","price":20000}]},{"name":"Indplan","options":[{"label":"1 Bulan","price":20000}]}]},{"id":"hbo","name":"HBO","short":"HBO","category":"watch","desc":"Film & serial premium","tag":"WATCH","color":"#f7d6f1","ink":"#965f96","offers":[{"name":"Standard · Sharing 5U","options":[{"label":"1 Bulan","price":25000}]},{"name":"Standard · Sharing 8U","options":[{"label":"1 Bulan","price":20000}]},{"name":"Standard · Private","options":[{"label":"1 Bulan","price":75000}]},{"name":"Ultimate · Sharing 5U","options":[{"label":"1 Bulan","price":40000}]},{"name":"Ultimate · Sharing 8U","options":[{"label":"1 Bulan","price":35000}]},{"name":"Ultimate · Private","options":[{"label":"1 Bulan","price":125000}]}]},{"id":"prime","name":"Prime Video","short":"PRIME","category":"watch","desc":"Streaming · series & film","tag":"WATCH","color":"#e2f4d7","ink":"#448468","offers":[{"name":"Sharing 4U","options":[{"label":"1 Bulan","price":15000},{"label":"2 Bulan","price":17000},{"label":"3 Bulan","price":20000}]},{"name":"Private","options":[{"label":"1 Bulan","price":35000},{"label":"2 Bulan · Renewal","price":40000}]}]},{"id":"viu","name":"VIU","short":"VIU","category":"watch","desc":"Drama & hiburan Asia","tag":"WATCH","color":"#ffd0cb","ink":"#b95d6e","offers":[{"name":"Sharing Harian","options":[{"label":"1 Hari","price":5000},{"label":"3 Hari","price":7000},{"label":"7 Hari","price":10000},{"label":"14 Hari","price":13000}]},{"name":"Private Antilimit","options":[{"label":"1 Bulan","price":15000},{"label":"3 Bulan","price":25000},{"label":"6 Bulan","price":40000},{"label":"1 Tahun","price":50000}]}]},{"id":"loklok","name":"Loklok","short":"LOK","category":"watch","desc":"Streaming film & drama","tag":"WATCH","color":"#d8eaf8","ink":"#4c79a7","offers":[{"name":"Basic · Sharing 3U","options":[{"label":"1 Bulan","price":27000}]},{"name":"Standar · Sharing 4U","options":[{"label":"1 Bulan","price":30000}]}]},{"id":"wetv","name":"WeTV","short":"WE","category":"watch","desc":"Drama, series & variety","tag":"WATCH","color":"#ffedb9","ink":"#9c7045","offers":[{"name":"Sharing 6U","options":[{"label":"1 Hari","price":5000},{"label":"1 Bulan","price":15000},{"label":"2 Bulan","price":20000}]},{"name":"Sharing 3U · Anti Limit","options":[{"label":"1 Bulan","price":25000}]},{"name":"Private","options":[{"label":"1 Bulan · Akun Store","price":40000},{"label":"1 Bulan · Akun Customer","price":45000}]}]},{"id":"iqiyi","name":"iQIYI","short":"IQ","category":"watch","desc":"Drama & film Asia","tag":"WATCH","color":"#f7d6f1","ink":"#965f96","offers":[{"name":"Premium · Sharing 8U","options":[{"label":"1 Hari","price":5000},{"label":"3 Hari","price":10000},{"label":"7 Hari","price":15000},{"label":"1 Bulan","price":25000},{"label":"3 Bulan","price":40000},{"label":"1 Tahun","price":55000}]},{"name":"Premium · Sharing Anlim 3U","options":[{"label":"1 Bulan","price":30000}]},{"name":"Premium · Private","options":[{"label":"1 Bulan","price":45000}]},{"name":"Standar · Sharing 8U","options":[{"label":"1 Bulan","price":15000},{"label":"3 Bulan","price":30000},{"label":"1 Tahun","price":40000}]},{"name":"Standar · Private","options":[{"label":"1 Bulan","price":40000}]}]},{"id":"vidio","name":"Vidio","short":"V","category":"watch","desc":"Streaming olahraga & hiburan","tag":"WATCH","color":"#e2f4d7","ink":"#448468","offers":[{"name":"Platinum · Sharing 2U","options":[{"label":"1 Bulan · All Device","price":35000},{"label":"1 Bulan · Mobile","price":30000}]},{"name":"Platinum · Private","options":[{"label":"7 Hari · Mobile","price":20000},{"label":"7 Hari · All Device","price":25000},{"label":"1 Bulan · Mobile","price":40000},{"label":"1 Bulan · All Device","price":55000},{"label":"1 Tahun · TV Only · Garansi 1 Bulan","price":20000}]},{"name":"Platinum Extra · Private","options":[{"label":"1 Bulan · All Device","price":70000},{"label":"1 Bulan · Mobile","price":50000}]},{"name":"Ultimate · Private","options":[{"label":"1 Bulan · All Device","price":165000},{"label":"1 Bulan · Mobile","price":95000}]}]},{"id":"crunchyroll","name":"Crunchyroll","short":"CR","category":"watch","desc":"Anime & serial","tag":"WATCH","color":"#ffd0cb","ink":"#b95d6e","offers":[{"name":"Sharing 5U","options":[{"label":"1 Bulan","price":20000},{"label":"1 Tahun","price":35000}]},{"name":"Private","options":[{"label":"1 Minggu","price":18000},{"label":"1 Bulan","price":30000}]}]},{"id":"gagaolala","name":"GagaOOLala","short":"GAGA","category":"watch","desc":"Streaming drama & film","tag":"WATCH","color":"#d8eaf8","ink":"#4c79a7","offers":[{"name":"Sharing","options":[{"label":"1 Bulan","price":20000}]}]},{"id":"bstation","name":"Bstation","short":"BILI","category":"watch","desc":"Anime & video","tag":"WATCH","color":"#ffedb9","ink":"#9c7045","offers":[{"name":"Sharing","options":[{"label":"1 Bulan","price":15000},{"label":"3 Bulan","price":25000},{"label":"1 Tahun · Garansi 6 Bulan","price":45000}]},{"name":"Private","options":[{"label":"1 Bulan","price":40000}]}]},{"id":"spotify","name":"Spotify","short":"SPOT","category":"music","desc":"Music · favorite songs","tag":"MUSIC","color":"#c1eed9","ink":"#248b6f","offers":[{"name":"Famplan","options":[{"label":"1 Bulan","price":25000}]},{"name":"Indplan","options":[{"label":"1 Bulan","price":28000}]}]},{"id":"applemusic","name":"Apple Music","short":"MUSIC","category":"music","desc":"Music · all day long","tag":"MUSIC","color":"#fbd2df","ink":"#bc6b80","offers":[{"name":"Famplan","options":[{"label":"1 Bulan","price":23000},{"label":"2 Bulan","price":30000},{"label":"3 Bulan","price":35000}]},{"name":"Indplan","options":[{"label":"1 Bulan","price":30000},{"label":"2 Bulan","price":38000}]}]},{"id":"canva","name":"Canva","short":"CANVA","category":"create","desc":"Design · templates","tag":"CREATE","color":"#cfeaf4","ink":"#4a84b3","offers":[{"name":"Basic Plan","options":[{"label":"1 Hari","price":3000},{"label":"3 Hari","price":5000},{"label":"7 Hari","price":7000},{"label":"1 Bulan","price":12000},{"label":"2 Bulan","price":14000},{"label":"3 Bulan","price":17000},{"label":"4 Bulan","price":20000},{"label":"5 Bulan","price":24000},{"label":"6 Bulan","price":27000}]}]},{"id":"capcut","name":"CapCut","short":"CUT","category":"create","desc":"Video · create & edit","tag":"CREATE","color":"#e9d8f6","ink":"#895da8","offers":[{"name":"Sharing","options":[{"label":"1 Hari","price":8000},{"label":"3 Hari","price":12000},{"label":"7 Hari","price":17000}]},{"name":"Private","options":[{"label":"1 Hari","price":10000},{"label":"3 Hari","price":18000},{"label":"7 Hari","price":25000},{"label":"1 Bulan","price":51000}]}]},{"id":"alightmotion","name":"Alight Motion","short":"AM","category":"create","desc":"Motion design & edit","tag":"CREATE","color":"#ffe2c8","ink":"#c17758","offers":[{"name":"Sharing","options":[{"label":"1 Tahun","price":30000}]}]},{"id":"camscanner","name":"CamScanner","short":"SCAN","category":"create","desc":"Scan · documents","tag":"CREATE","color":"#d0efd9","ink":"#4b9271","offers":[{"name":"Sharing","options":[{"label":"1 Bulan","price":20000},{"label":"1 Tahun","price":40000}]},{"name":"Private","options":[{"label":"1 Bulan","price":30000}]}]},{"id":"picsart","name":"Picsart","short":"PIC","category":"create","desc":"Photo & creative tools","tag":"CREATE","color":"#cfeaf4","ink":"#4a84b3","offers":[{"name":"Sharing","options":[{"label":"1 Bulan","price":15000}]},{"name":"Private","options":[{"label":"1 Bulan","price":25000}]}]},{"id":"ibispaint","name":"ibis Paint","short":"IBIS","category":"create","desc":"Illustration & drawing","tag":"CREATE","color":"#e9d8f6","ink":"#895da8","offers":[{"name":"Android Sharing","options":[{"label":"1 Tahun","price":40000}]}]},{"id":"dazzcam","name":"Dazz Cam","short":"DAZZ","category":"create","desc":"Vintage photo filters","tag":"CREATE","color":"#ffe2c8","ink":"#c17758","offers":[{"name":"Sharing","options":[{"label":"Lifetime · Garansi 6 Bulan","price":30000}]}]},{"id":"meitu","name":"Meitu","short":"MEI","category":"create","desc":"Photo retouch & editing","tag":"CREATE","color":"#d0efd9","ink":"#4b9271","offers":[{"name":"VIP · Sharing 2U · All Device","options":[{"label":"7 Hari","price":15000}]},{"name":"VIP · Private · All Device","options":[{"label":"7 Hari","price":25000},{"label":"1 Bulan","price":28000}]},{"name":"VIP+ · Private · All Device","options":[{"label":"1 Bulan","price":48000}]}]},{"id":"chatgpt","name":"ChatGPT Plus","short":"GPT","category":"education","desc":"AI · study & productivity","tag":"EDUCATION","color":"#fbe9b7","ink":"#8c7440","offers":[{"name":"Sharing 3U","options":[{"label":"1 Hari","price":18000},{"label":"3 Hari","price":25000},{"label":"7 Hari","price":35000},{"label":"1 Bulan","price":65000}]},{"name":"Sharing 5U","options":[{"label":"1 Hari","price":15000},{"label":"3 Hari","price":20000},{"label":"7 Hari","price":30000},{"label":"1 Bulan","price":55000}]},{"name":"Sharing 8U","options":[{"label":"1 Hari","price":10000},{"label":"3 Hari","price":15000},{"label":"7 Hari","price":20000},{"label":"1 Bulan","price":40000}]},{"name":"Private","options":[{"label":"1 Bulan","price":190000}]}]},{"id":"gemini","name":"Gemini","short":"GEM","category":"education","desc":"AI · chat & research","tag":"EDUCATION","color":"#d9e7ff","ink":"#637fbd","offers":[{"name":"Invite Plus","options":[{"label":"1 Bulan","price":25000},{"label":"2 Bulan","price":40000}]},{"name":"Invite Pro","options":[{"label":"1 Bulan","price":40000},{"label":"2 Bulan","price":50000}]}]},{"id":"claude","name":"Claude","short":"CL","category":"education","desc":"AI · writing & thinking","tag":"EDUCATION","color":"#c4ebdf","ink":"#4f917f","offers":[{"name":"Sharing 3U","options":[{"label":"1 Hari","price":35000},{"label":"2 Hari","price":45000},{"label":"7 Hari","price":65000}]},{"name":"Private","options":[{"label":"1 Hari","price":55000},{"label":"3 Hari","price":85000},{"label":"7 Hari","price":165000}]}]},{"id":"microsoft365","name":"Microsoft 365","short":"365","category":"education","desc":"Office · work & study","tag":"EDUCATION","color":"#f9d5e5","ink":"#b26088","offers":[{"name":"Sharing","options":[{"label":"1 Bulan","price":15000},{"label":"2 Bulan","price":25000}]}]},{"id":"duolingo","name":"Duolingo","short":"DUO","category":"education","desc":"Languages · daily learning","tag":"EDUCATION","color":"#fbe9b7","ink":"#8c7440","offers":[{"name":"Famplan","options":[{"label":"1 Minggu","price":15000},{"label":"2 Minggu","price":17000},{"label":"1 Bulan","price":20000}]},{"name":"Indplan","options":[{"label":"1 Bulan","price":30000},{"label":"2 Bulan","price":40000}]}]},{"id":"grammarly","name":"Grammarly","short":"GRAM","category":"education","desc":"Grammar & writing tools","tag":"EDUCATION","color":"#d9e7ff","ink":"#637fbd","offers":[{"name":"Sharing","options":[{"label":"1 Minggu","price":20000},{"label":"1 Bulan","price":25000}]},{"name":"Private","options":[{"label":"1 Minggu","price":35000},{"label":"1 Bulan","price":55000}]}]},{"id":"scribd","name":"Scribd","short":"SCR","category":"education","desc":"Reading & documents","tag":"EDUCATION","color":"#c4ebdf","ink":"#4f917f","offers":[{"name":"Sharing","options":[{"label":"1 Minggu","price":10000},{"label":"1 Bulan","price":15000},{"label":"2 Bulan","price":20000}]},{"name":"Private","options":[{"label":"1 Minggu","price":35000},{"label":"1 Bulan","price":40000}]}]},{"id":"wps","name":"WPS Office","short":"WPS","category":"education","desc":"Documents & productivity","tag":"EDUCATION","color":"#f9d5e5","ink":"#b26088","offers":[{"name":"Sharing","options":[{"label":"1 Bulan","price":20000}]},{"name":"Private","options":[{"label":"1 Bulan","price":40000}]}]},{"id":"wattpad","name":"Wattpad","short":"WATT","category":"other","desc":"Stories & reading","tag":"OTHER","color":"#fbdac7","ink":"#aa6a58","offers":[{"name":"Sharing","options":[{"label":"1 Bulan","price":15000},{"label":"1 Tahun · Garansi 6 Bulan","price":35000}]},{"name":"Private","options":[{"label":"1 Bulan","price":40000}]}]},{"id":"getcontact","name":"Getcontact","short":"GET","category":"other","desc":"Caller ID & nomor","tag":"OTHER","color":"#e0dafa","ink":"#756ba6","offers":[{"name":"Premium Nomor · Private","options":[{"label":"1 Bulan","price":15000}]},{"name":"Cek Getcontact","options":[{"label":"1× Cek · Per Nomor","price":1000}]}]},{"id":"ilovepdf","name":"iLovePDF","short":"PDF","category":"other","desc":"PDF & document tools","tag":"OTHER","color":"#d2efdb","ink":"#3c8669","offers":[{"name":"Sharing","options":[{"label":"1 Bulan","price":15000},{"label":"1 Tahun · Garansi 6 Bulan","price":35000}]},{"name":"Private","options":[{"label":"1 Bulan","price":35000}]}]},{"id":"zoom","name":"Zoom","short":"ZOOM","category":"other","desc":"Meeting · 100 participants","tag":"OTHER","color":"#ffe6ae","ink":"#ac8746","offers":[{"name":"100 Participants","options":[{"label":"2 Jam","price":10000},{"label":"1 Hari","price":15000},{"label":"1 Minggu","price":45000},{"label":"2 Minggu","price":55000},{"label":"1 Bulan","price":75000}]}]},{"id":"ifake","name":"iFake","short":"iFAKE","category":"other","desc":"Creative entertainment","tag":"OTHER","color":"#fbdac7","ink":"#aa6a58","offers":[{"name":"Sharing","options":[{"label":"Lifetime","price":20000}]}]}];
 
-<div class="trust">
-  <span>♡ EASY CHECKOUT</span>
-  <span>✧ SECURE PAYMENT</span>
-  <span>✿ FRIENDLY SERVICE</span>
-</div>
+  const featuredIds = ['spotify','netflix','canva','chatgpt','disney','youtube','capcut','gemini'];
+  const orderOf = a => {const n=featuredIds.indexOf(a.id);return n===-1?100+apps.indexOf(a):n};
+  const sortedApps=[...apps].sort((a,b)=>orderOf(a)-orderOf(b));
+  const rupiah=n=>'Rp '+n.toLocaleString('id-ID');
+  const minPrice=a=>Math.min(...a.offers.flatMap(o=>o.options.map(x=>x.price)));
+  const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const grid=document.getElementById('albumGrid');
+  const playlistRows=document.getElementById('playlistRows');
+  const showMore=document.getElementById('showMore');
+  const planSelect=document.getElementById('planSelect');
+  let activeFilter='all',searchTerm='',showAll=false;
+  let selected=null,selectedPlan=0,selectedDuration=0;
+  let lastFocus=null;
 
-<section class="products-section" id="products">
+  const getMatches=()=>sortedApps.filter(a=>
+    (activeFilter==='all'||a.category===activeFilter)&&
+    [a.name,a.category,a.desc,...a.offers.map(o=>o.name)].join(' ').toLocaleLowerCase('id-ID').includes(searchTerm)
+  );
+  function render(){
+    const matches=getMatches();
+    const expanded=showAll||Boolean(searchTerm);
+    const visible=expanded?matches:matches.slice(0,8);
+    document.getElementById('resultCount').textContent=
+      `${String(visible.length).padStart(2,'0')} / ${String(matches.length).padStart(2,'0')} TRACKS`;
+    grid.innerHTML=visible.map(a=>{
+      const trackNo=String(apps.indexOf(a)+1).padStart(2,'0');
+      return `<article class="album-card">
+        <div class="album-cover" style="--album-bg:${a.color};--album-ink:${a.ink}">
+          <div class="cover-top"><span>REIKA RECORDS</span><span>${trackNo} / 36</span></div>
+          <span class="cover-name">${esc(a.short)}</span><span class="spark">✳</span>
+        </div>
+        <div class="album-meta">
+          <div class="album-topline"><h3>${esc(a.name)}</h3><small>♡</small></div>
+          <div class="price-line"><div><span>STARTS FROM</span><strong>${rupiah(minPrice(a))}</strong></div><small>♫</small></div>
+          <button class="track-btn" data-order="${a.id}">＋ PILIH PLAN</button>
+        </div>
+      </article>`;
+    }).join('')||'<div class="no-results">Aplikasi belum ditemukan. Coba kategori atau kata kunci lain ♡</div>';
+    showMore.hidden=expanded||matches.length<=8;
+    showMore.textContent=`＋ LIHAT ${matches.length-8} APLIKASI LAINNYA`;
+    playlistRows.innerHTML=matches.map((a,i)=>
+      `<button class="song-row" data-order="${a.id}" aria-label="Pilih ${esc(a.name)}">
+       <span class="num">${String(i+1).padStart(2,'0')}</span>
+       <span class="song-cover" style="background:${a.color};color:${a.ink}">${esc(a.short.length>4?a.short.slice(0,3):a.short)}</span>
+       <span class="song-data"><strong>${esc(a.name)}</strong><small>${esc(a.desc)}</small></span>
+       <span class="song-price">${rupiah(minPrice(a))}</span><span class="song-add">+</span>
+       </button>`).join('')||'<div class="no-results">Tidak ada lagu yang cocok ♡</div>';
+  }
+  function getOption(){return selected.offers[selectedPlan].options[selectedDuration]}
+  function openOrder(id){
+    const a=apps.find(x=>x.id===id);if(!a)return;
+    lastFocus=document.activeElement;
+    selected=a;selectedPlan=0;selectedDuration=0;
+    const icon=document.getElementById('modalIcon');
+    icon.textContent=a.short;icon.style.background=a.color;icon.style.color=a.ink;
+    document.getElementById('modalName').textContent=a.name;
+    document.getElementById('modalSub').textContent=`REIKA ORIGINAL MIX · ${a.tag}`;
+    document.getElementById('miniArt').textContent=a.short;
+    document.getElementById('miniArt').style.background=a.color;
+    document.getElementById('miniTitle').textContent=a.name;
+    document.getElementById('miniPlayer').classList.add('visible');
+    planSelect.innerHTML=a.offers.map((o,i)=>`<option value="${i}">${esc(o.name)}</option>`).join('');
+    planSelect.value='0';
+    paintDuration();
+    const o=document.getElementById('orderOverlay');
+    o.classList.add('open');o.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    document.getElementById('waNotice').hidden=true;
+    document.getElementById('closeModal').focus();
+    document.querySelector('.modal').scrollTop=0;
+  }
+  function paintDuration(){
+    if(!selected)return;
+    const offer=selected.offers[selectedPlan];
+    document.getElementById('durationOptions').innerHTML=offer.options.map((d,i)=>
+      `<button class="duration-choice ${selectedDuration===i?'active':''}" data-duration="${i}" aria-pressed="${selectedDuration===i}">
+       <strong>${esc(d.label)}</strong><small>${rupiah(d.price)}</small></button>`).join('');
+    document.getElementById('totalPrice').textContent=rupiah(getOption().price);
+    document.getElementById('selectedDetail').textContent=`♫ ${selected.name} / ${offer.name} / ${getOption().label}`;
+  }
+  function closeOrder(){
+    const o=document.getElementById('orderOverlay');
+    o.classList.remove('open');o.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+    if(lastFocus?.isConnected)lastFocus.focus();
+  }
+  function message(){
+    const offer=selected.offers[selectedPlan], opt=getOption();
+    return `haii kaa reii ♡\naku mau order di Reika Store yaa!\n\n`+
+      `💿 Aplikasi: ${selected.name}\n`+
+      `🎧 Plan / akun: ${offer.name}\n`+
+      `⏰ Durasi / varian: ${opt.label}\n`+
+      `💰 Harga: ${rupiah(opt.price)}\n\n`+
+      `boleh dibantu prosesnya? makasih kaa ♡`;
+  }
+  document.addEventListener('click',e=>{
+    const ord=e.target.closest('[data-order]');if(ord){openOrder(ord.dataset.order);return}
+    const dur=e.target.closest('[data-duration]');if(dur&&selected){selectedDuration=Number(dur.dataset.duration);paintDuration()}
+  });
+  planSelect.addEventListener('change',()=>{selectedPlan=Number(planSelect.value);selectedDuration=0;paintDuration()});
+  document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');activeFilter=b.dataset.filter;showAll=false;render();
+  }));
+  showMore.addEventListener('click',()=>{showAll=true;render()});
+  document.getElementById('searchToggle').addEventListener('click',()=>{
+    const p=document.getElementById('searchPanel');p.classList.toggle('visible');
+    if(p.classList.contains('visible')){
+      document.getElementById('searchInput').focus();
+      document.getElementById('catalog').scrollIntoView({behavior:'smooth',block:'start'});
+    }else{searchTerm='';showAll=false;document.getElementById('searchInput').value='';render()}
+  });
+  document.getElementById('searchInput').addEventListener('input',e=>{
+    searchTerm=e.target.value.toLocaleLowerCase('id-ID').trim();showAll=false;render();
+  });
+  document.getElementById('closeModal').addEventListener('click',closeOrder);
+  document.getElementById('orderOverlay').addEventListener('click',e=>{if(e.target.id==='orderOverlay')closeOrder()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('orderOverlay').classList.contains('open'))closeOrder()});
+  document.getElementById('miniOpen').addEventListener('click',()=>{if(selected)openOrder(selected.id)});
+  document.getElementById('waOrder').addEventListener('click',()=>{
+    const phone=WHATSAPP_NUMBER.replace(/\D/g,'');
+    if(!/^62\d{8,13}$/.test(phone)){
+      document.getElementById('waNotice').hidden=false;return;
+    }
+    window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(message()),'_blank','noopener,noreferrer');
+  });
+  document.getElementById('copyMessage').addEventListener('click',async()=>{
+    if(!selected)return;
+    const btn=document.getElementById('copyMessage');
+    try{await navigator.clipboard.writeText(message());btn.textContent='✓ Pesan berhasil disalin';setTimeout(()=>btn.textContent='Salin pesan order',1800)}
+    catch(e){window.prompt('Salin pesan ini:',message())}
+  });
+  render();
 
-  <div class="section-head">
-    <small>OUR COLLECTION ✿</small>
-    <h2>Find your favorites ♡</h2>
-    <p>A little something to make your day better.</p>
-  </div>
-
-  <div class="products">
-
-    <div class="product">
-      <div class="product-icon">🎬</div>
-      <h3>Streaming</h3>
-      <p>Premium entertainment subscriptions.</p>
-      <button onclick="chooseProduct('Streaming')">
-        Explore →
-      </button>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🎧</div>
-      <h3>Music</h3>
-      <p>Enjoy your favorite music.</p>
-      <button onclick="chooseProduct('Music')">
-        Explore →
-      </button>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">☁️</div>
-      <h3>Cloud</h3>
-      <p>Digital productivity essentials.</p>
-      <button onclick="chooseProduct('Cloud')">
-        Explore →
-      </button>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🎀</div>
-      <h3>More goodies</h3>
-      <p>Discover more digital products.</p>
-      <button onclick="chooseProduct('More goodies')">
-        Explore →
-      </button>
-    </div>
-
-  </div>
-</section>
-
-<section class="promo" id="about">
-  <h2>a little happiness, delivered ♡</h2>
-  <p>
-    Simple shopping, lovely experience.
-    Thank you for visiting our little store!
-  </p>
-</section>
-</main>
-
-<footer>
-  <h2>moka digital ♡</h2>
-  <p>Made with love for your digital needs.</p>
-  <p>© 2026 Moka Digital. All rights reserved.</p>
-</footer>
-
-<script>
-function toggleMenu() {
-  document.getElementById('navigation').classList.toggle('show');
-}
-
-function chooseProduct(name) {
-  alert(name + ' collection coming soon! ♡');
-}
-</script>
-
+  </script>
 </body>
 </html>
